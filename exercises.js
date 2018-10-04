@@ -44,7 +44,7 @@ function findPrevious(list, item) {
     current = current.next;
   }
 
-  console.log(previous.value);
+  return previous.value;
 }
 
 function findLast(list) {
@@ -53,7 +53,7 @@ function findLast(list) {
   }
 
   if (list.head.next === null) {
-    console.log(list.head.value);
+    return list.head;
   }
 
   let tempNode = list.head;
@@ -61,7 +61,7 @@ function findLast(list) {
     tempNode = tempNode.next;
   }
 
-  console.log(tempNode.value);
+  return tempNode;
 }
 
 function main() {
@@ -90,17 +90,14 @@ main();
 //MYSTERY PROGRAM: Skips over duplicate values, is Polynomial runtime
 
 function reverseList(list) {
-  let current = list.head;
-  let previous = list.head;
   if (list.head.next === null) {
+    insertFirst();
     displayList(list);
     return list;
   }
   //get to the end probably with WHILE
-  while (current.next !== null) {
-    previous = current;
-    current = current.next;
-  }
+  let current = findLast(list);
+  let previous = findPrevious(list, current);
   //At the end set current.next to previous and previous.next
   //to null and then call the function
   current.next = previous;
