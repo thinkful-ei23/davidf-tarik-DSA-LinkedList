@@ -85,6 +85,7 @@ function main() {
   // reverseList(SLL);
   displayList(SLL);
   findThirdToLast(SLL);
+  findMiddleNode(SLL);
 }
 
 main();
@@ -117,16 +118,33 @@ function findThirdToLast(list) {
     return null;
   }
 
-  let count = 1;
+  let position = 1;
   let tempNode = list.head;
 
-  while (count !== (size - 3)) {
+  while (position !== (size - 3)) {
     tempNode = tempNode.next;
-    count++;
+    position++;
   }
 
   console.log(JSON.stringify(tempNode));
   return tempNode;
 }
 
+function findMiddleNode(list) {
+  const size = displaySize(list);
+  if (size < 3) {
+    return null;
+  }
 
+  let position = 1;
+  let middlePos = Math.floor(size/2);
+  let tempNode = list.head;
+
+  while (position !== middlePos) {
+    tempNode = tempNode.next;
+    position++;
+  }
+
+  console.log(JSON.stringify(tempNode));
+  return tempNode;
+}
