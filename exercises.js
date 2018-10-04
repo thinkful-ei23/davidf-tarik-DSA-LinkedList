@@ -9,7 +9,7 @@ function displayList(list) {
 }
 
 function displaySize(list) {
-  if(!list.head) {
+  if (!list.head) {
     console.log('The linked list is empty');
     return;
   }
@@ -26,8 +26,7 @@ function displaySize(list) {
 function isEmpty(list) {
   if (!list.head) {
     console.log('The linked list is empty');
-  }
-  else {
+  } else {
     console.log('The linked list is populated');
   }
 }
@@ -82,6 +81,31 @@ function main() {
   isEmpty(SLL);
   findPrevious(SLL, 'Boomer');
   findLast(SLL);
+  reverseList(SLL);
+  displayList(SLL);
 }
 
 main();
+
+//MYSTERY PROGRAM: Skips over duplicate values, is Polynomial runtime
+
+function reverseList(list) {
+  let current = list.head;
+  let previous = list.head;
+  if (list.head.next === null) {
+    displayList(list);
+    return list;
+  }
+  //get to the end probably with WHILE
+  while (current.next !== null) {
+    previous = current;
+    current = current.next;
+  }
+  //At the end set current.next to previous and previous.next
+  //to null and then call the function
+  current.next = previous;
+  console.log(list);
+  previous.next = null;
+
+  return reverseList(list);
+}
