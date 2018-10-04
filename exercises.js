@@ -32,6 +32,22 @@ function isEmpty(list) {
   }
 }
 
+function findPrevious(list, item) {
+  if (!list.head || list.head.value === item) {
+    return null;
+  }
+
+  let previous = list.head;
+  let current = list.head;
+
+  while (current.next !== null && current.value !== item) {
+    previous = current;
+    current = current.next;
+  }
+
+  console.log(previous.value);
+}
+
 function main() {
   const SLL = LL;
   SLL.insertFirst('Apollo');
@@ -47,6 +63,7 @@ function main() {
   displayList(SLL);
   displaySize(SLL);
   isEmpty(SLL);
+  findPrevious(SLL, 'Boomer');
 }
 
 main();
