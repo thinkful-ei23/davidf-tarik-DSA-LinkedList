@@ -11,7 +11,7 @@ function displayList(list) {
 function displaySize(list) {
   if (!list.head) {
     console.log('The linked list is empty');
-    return;
+    return 0;
   }
 
   let count = 1;
@@ -21,6 +21,7 @@ function displaySize(list) {
     tempNode = tempNode.next;
   }
   console.log(`The linked list has '${count}' nodes`);
+  return count;
 }
 
 function isEmpty(list) {
@@ -44,7 +45,7 @@ function findPrevious(list, item) {
     current = current.next;
   }
 
-  return previous.value;
+  return previous;
 }
 
 function findLast(list) {
@@ -81,28 +82,51 @@ function main() {
   isEmpty(SLL);
   findPrevious(SLL, 'Boomer');
   findLast(SLL);
-  reverseList(SLL);
+  // reverseList(SLL);
   displayList(SLL);
+  findThirdToLast(SLL);
 }
 
 main();
 
 //MYSTERY PROGRAM: Skips over duplicate values, is Polynomial runtime
 
-function reverseList(list) {
+function reverseList(list, lastNode = null) {
   if (list.head.next === null) {
-    insertFirst();
+    list.head = lastNode;
     displayList(list);
     return list;
   }
   //get to the end probably with WHILE
   let current = findLast(list);
+  if (lastNode === null) {
+    lastNode = current;
+  }
   let previous = findPrevious(list, current);
   //At the end set current.next to previous and previous.next
   //to null and then call the function
   current.next = previous;
-  console.log(list);
   previous.next = null;
 
-  return reverseList(list);
+  return reverseList(list, lastNode);
 }
+
+function findThirdToLast(list) {
+  const size = displaySize(list);
+  if (size < 4) {
+    return null;
+  }
+
+  let count = 1;
+  let tempNode = list.head;
+
+  while (count !== (size - 3)) {
+    tempNode = tempNode.next;
+    count++;
+  }
+
+  console.log(JSON.stringify(tempNode));
+  return tempNode;
+}
+
+
