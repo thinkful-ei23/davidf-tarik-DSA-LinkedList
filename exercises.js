@@ -48,6 +48,23 @@ function findPrevious(list, item) {
   console.log(previous.value);
 }
 
+function findLast(list) {
+  if (!list.head) {
+    return null;
+  }
+
+  if (list.head.next === null) {
+    console.log(list.head.value);
+  }
+
+  let tempNode = list.head;
+  while (tempNode.next !== null) {
+    tempNode = tempNode.next;
+  }
+
+  console.log(tempNode.value);
+}
+
 function main() {
   const SLL = LL;
   SLL.insertFirst('Apollo');
@@ -64,6 +81,7 @@ function main() {
   displaySize(SLL);
   isEmpty(SLL);
   findPrevious(SLL, 'Boomer');
+  findLast(SLL);
 }
 
 main();
