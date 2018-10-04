@@ -43,6 +43,21 @@ class LinkedList {
     previousNode.next = new _Node(newItem, currNode);
   }
 
+  insertAfter(newItem, currentItem) {
+    if (!this.head) {
+      return null;
+    }
+    let current = this.head;
+    let previous = this.head;
+
+    while (current !== null && previous.value !== currentItem) {
+      previous = current;
+      current = current.next;
+    }
+
+    previous.next = new _Node(newItem, current);
+  }
+
   find(item) {
     let currNode = this.head;
 
