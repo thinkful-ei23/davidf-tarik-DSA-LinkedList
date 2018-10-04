@@ -13,7 +13,7 @@ function displaySize(list) {
     console.log('The linked list is empty');
     return;
   }
-  
+
   let count = 1;
   let tempNode = list.head;
   while (tempNode.next !== null) {
@@ -23,9 +23,17 @@ function displaySize(list) {
   console.log(`The linked list has '${count}' nodes`);
 }
 
+function isEmpty(list) {
+  if (!list.head) {
+    console.log('The linked list is empty');
+  }
+  else {
+    console.log('The linked list is populated');
+  }
+}
+
 function main() {
   const SLL = LL;
-
   SLL.insertFirst('Apollo');
   SLL.insertLast('Boomer');
   SLL.insertLast('Helo');
@@ -38,6 +46,7 @@ function main() {
   SLL.remove('Tauhida');
   displayList(SLL);
   displaySize(SLL);
+  isEmpty(SLL);
 }
 
 main();
