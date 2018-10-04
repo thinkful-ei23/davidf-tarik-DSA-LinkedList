@@ -28,6 +28,21 @@ class LinkedList {
     }
   }
 
+  insertBefore(newItem, currentItem) {
+    if (!this.head) {
+      return null;
+    }
+    let currNode = this.head;
+    let previousNode = this.head;
+
+    while (currNode !== null && currNode.value !== currentItem) {
+      previousNode = currNode;
+      currNode = currNode.next;
+    }
+
+    previousNode.next = new _Node(newItem, currNode);
+  }
+
   find(item) {
     let currNode = this.head;
 

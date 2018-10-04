@@ -14,6 +14,7 @@ function main() {
   SLL.insertLast('Starbuck');
   SLL.insertLast('Tauhida');
   SLL.remove('Helo');
+  SLL.insertBefore('BeforeTest', 'Husker');
   console.log(JSON.stringify(SLL));
 }
 
