@@ -119,4 +119,8 @@ class LinkedList {
   }
 }
 
+class DoublyLinkedList {
+  
+}
+
 module.exports = { LinkedList, _Node };
