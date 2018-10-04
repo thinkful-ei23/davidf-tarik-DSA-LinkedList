@@ -58,6 +58,24 @@ class LinkedList {
     previous.next = new _Node(newItem, current);
   }
 
+  insertAt(newItem, n) {
+    if (!this.head) {
+      this.insertFirst(newItem);
+    }
+
+    let count = 0;
+    let previous = this.head;
+    let current = this.head;
+
+    while (count !== n) {
+      count++;
+      previous = current;
+      current = current.next;
+    }
+
+    previous.next = new _Node(newItem, current); 
+  }
+
   find(item) {
     let currNode = this.head;
 

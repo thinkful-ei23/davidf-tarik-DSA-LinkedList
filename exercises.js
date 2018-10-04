@@ -16,6 +16,7 @@ function main() {
   SLL.remove('Helo');
   SLL.insertBefore('BeforeTest', 'Husker');
   SLL.insertAfter('AfterTest', 'Husker');
+  SLL.insertAt('insertAtTest', 3);
   console.log(JSON.stringify(SLL));
 }
 
