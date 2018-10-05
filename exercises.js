@@ -2,8 +2,6 @@
 
 const { LinkedList } = require('./linked-list-drills');
 
-const LL = new LinkedList();
-
 function displayList(list) {
   console.log(JSON.stringify(list, null, 2));
 }
@@ -66,7 +64,7 @@ function findLast(list) {
 }
 
 function main() {
-  const SLL = LL;
+  const SLL = new LinkedList();
   SLL.insertFirst('Apollo');
   SLL.insertLast('Boomer');
   SLL.insertLast('Helo');
@@ -86,6 +84,17 @@ function main() {
   displayList(SLL);
   findThirdToLast(SLL);
   findMiddleNode(SLL);
+
+  const CycleList = new LinkedList();
+  CycleList.insertFirst('January');
+  CycleList.insertLast('February');
+  CycleList.insertLast('March');
+  CycleList.insertLast('April');
+  const last = findLast(CycleList);
+  const someNode = CycleList.find('February');
+  last.next = someNode;
+  isCycledList(CycleList);
+  isCycledList(SLL);
 }
 
 main();
@@ -147,4 +156,21 @@ function findMiddleNode(list) {
 
   console.log(JSON.stringify(tempNode));
   return tempNode;
+}
+
+function isCycledList(list) {
+  let values = [list.head.value];
+  let tempNode = list.head.next;
+  let isCycled = true;
+  while (values.indexOf(tempNode.next.value) === -1) {
+    values.push(tempNode.next.value);
+    tempNode = tempNode.next;
+
+    if (tempNode.next === null) {
+      isCycled = false;
+      break;
+    }
+  }
+  console.log('Is the list a cycled list? ' + isCycled);
+  return isCycled;
 }
